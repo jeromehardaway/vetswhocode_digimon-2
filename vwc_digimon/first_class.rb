@@ -1,17 +1,17 @@
 # super class
 class Human
-    def name
-        puts "Y'Eli"
-        puts "Buonya"
-    end
+  def name
+    puts "Y'Eli"
+    puts "Buonya"
+  end
     
-    def gender
-        puts "Dude"
-    end
+  def gender
+    puts "Dude"
+  end
     
-    def service
-       puts "US ARMY INFANTRY" 
-    end
+  def service
+    puts "US ARMY INFANTRY" 
+  end
 end
 
 # sub class
