@@ -1,0 +1,67 @@
+n
+Methods provide a way to collect and organize
+program statements and expressions into one
+place so that you can use them conveniently
+and repeatedly. Most Ruby operators are Methods.
+Here is an example of a method:
+=end
+
+def hello
+  puts "Hello, World"
+end
+
+# here is another example of a method
+
+puts ""
+
+# A method agrument is any data that is passed to a method
+# example
+
+puts "This is a method Argument"
+
+# Interpolation is when you substitute the value in a variable
+# example
+
+input = "jay" #This is a variable
+
+def greeting # This is a method
+  puts "Hi #{input}" #This is a method argument with string Interpolation
+end
+
+=begin
+ Constants are names  that are not expected
+ to have thier value changed after initial
+ assignment. They usually begin with
+ a capital letter (Contant) and are
+ usually all caps (CONSTANT). Although
+ the constant does not change, the contents
+ of it can change *Without Warning*, which is
+ why we call constants mutable cause its value
+ can vary.
+=end
+
+=begin
+
+Classes are containers that hold properties
+(called Class members). They can inherit 
+properties from a parent of superclass
+creating a heiracrhy of classes with
+a base class at the root or the top.
+
+Example:
+=end
+
+class hello
+  
+  def initialize (name) #initialize bitches we go over that today
+    @name = name
+  end
+
+  def hello
+    puts "Hello, " + @name + "!"
+  end
+end
+
+#irb stuff right hurrrrreee (say it in your Nelly voice)
+hi = Hello.new( "you name here" )
+hi.hello => # what will the answer be?
