@@ -1,11 +1,5 @@
-greeting = "Welcome!" # assign welcome message to variable greeting
+player_1 = "larry" # assign first players name to variable
+player_1_health = 60 # assign player 1 current health
 
-# prints to the screen 3 times in a loop using the upcase method on greeting
-
-3.times do             
-  puts greeting.upcase
-end
-
-# print current time
-
-puts Time.now
+# using single quotes and concatenation to display name and health
+puts player_1 + '\'s ' + 'health is ' + player_1_health.to_s 
