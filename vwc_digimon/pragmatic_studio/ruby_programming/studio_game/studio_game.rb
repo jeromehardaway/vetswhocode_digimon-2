@@ -1,61 +1,84 @@
-player_1 = "larry" # assign first players name to variable
-player_1_health = 60 # assign player 1 current health
-player_2 = 'curly' # create a second variable to hold another player
-player_2_health = 125 # assigned an initial health value
-player_3 = 'moe' # create a third variable to hold another player
-player_3_health = 100 # assigned an initial health of 100
-player_4 = 'shemp' # create a fourth variable to hold another player
-player_4_health = 90 # assign an initial health of 90
+# Ex 12: Methods
 
-
+# 1.2
+# define a say_hello method that takes a name parameter and prints out the
+# the player's name
 =begin
-# using single quotes and concatenation to display name and health
-puts player_1 + '\'s ' + 'health is ' + player_1_health.to_s 
+def say_hello(name)
+  puts "I'm #{name.capitalize}"  
+end
 
-# this time using string interpolation
-puts "#{player_1}'s health is #{player_1_health}"
-
-# change string to triple larry's health
-puts "#{player_1}'s health is #{player_1_health * 3}"
-
-# have health divided by 9 and displayed as an intger
-puts "#{player_1}'s health is #{player_1_health / 9}"
-
-# as a floating number
-puts "#{player_1}'s health is #{player_1_health / 9.0}"
-
-# print out each player's name on a separate line and indented tab
-puts "Players: \n\t#{player_1}\n\t#{player_2}\n\t#{player_3}"
+# 1.3
+say_hello("larry")
+say_hello("curly")
+say_hello("moe")
+say_hello("shemp")
 =end
 
-# change how the player's name is printed so that it is capitalized
-puts "#{player_1.capitalize} has a health of #{player_1_health}"
+# 1.4
+# Change the say_hello method to return a string and also change how the 
+# say_hello method is called so that the returned value is printed to the console.
+=begin
+def say_hello(name)
+  "I'm #{name.capitalize}"
+end
 
-# use upcase method on player_2 
-puts "#{player_2.upcase} has a health of #{player_2_health}"
+puts say_hello("larry")
+=end
 
-# change curly's health variable to point to larry's health variable and print
-# out curly's information again
+# 1.5 what will happen if we run the folowing code outside the say_hello method?
+# puts name # this will display an error stating undefined local variable (scope)
 
-player_2_health = player_1_health
 
-puts "#{player_2.upcase} has a health of #{player_2_health}"
+# 2.1 && 2.2
+# change the say_hello method so you can call it with the player's name and health
+# example > puts say_hello("larry", 60)
+=begin
+def say_hello(name, health)
+  "I'm #{name.capitalize} with a health of #{health}"
+end
 
-# reassign larry's health variable to 30, then print out the name and health
-# of both players again
+puts say_hello("larry", 60)
+puts say_hello("curly", 125)
+puts say_hello("moe", 100)
+puts say_hello("shemp", 90)
+=end
 
-player_1_health = 30
-puts "#{player_1.capitalize} has a health of #{player_1_health}"
-puts "#{player_2.upcase} has a health of #{player_2_health}"
+# 3.1
+# change the health parameter to have a default value of 100
+=begin
+def say_hello(name, health=100)
+  "I'm #{name.capitalize} with a health of #{health}"
+end
 
-# create player 3 info to display like so > ************Moe has a health of 100.************
-puts "#{player_3.capitalize} has a health of #{player_3_health}.".center(48, '*')
+# 3.2
+# Change the call to the say_hello method for Moe to use the default parameter value.
+# puts say_hello("moe")
 
-# print outh his information with the name capitalized and left-justified
-puts "#{player_4.capitalize.ljust(32,'.')} #{player_4_health} health"
+# 3.3
+# run to program to get results
+puts say_hello("larry", 60)
+puts say_hello("curly", 125)
+puts say_hello("moe")
+puts say_hello("shemp", 90)
+=end
 
-# convert 123 to a string object and reverse it
-puts 123.to_s.reverse
+# 4.1
+# define a new time method to return time in the following format HH:MM:SS
 
-# convert it back to an integer after reversing it
-puts 123.to_s.reverse.to_i
+def time
+  t = Time.new
+  t.strftime("%H:%M:%S")
+end
+
+# 4.2
+# change the say_hello method to call the time method
+def say_hello(name, health=100)
+  "I'm #{name.capitalize} with a health of #{health} as of #{time}"
+end
+
+# 4.3 check to see if each player's greeting includes current time
+puts say_hello("larry", 60)
+puts say_hello("curly", 125)
+puts say_hello("moe", 100)
+puts say_hello("shemp", 90)
