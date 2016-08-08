@@ -40,10 +40,44 @@ end
 player1 = Player.new("moe")
 player2 = Player.new("larry", 60)
 player3 = Player.new("curly", 125)
+player4 = Player.new("shemp", 90)
 
-puts player1.health
-puts player2.health
-puts player3.health
+# create an array of players that contains all 3 player objects
+players = [player1, player2, player3]
 
-player1.name = "Lawrence" # change player1's name using attr_accessor 
-puts player1.name
+=begin
+# print out the the size of the players array using a string and interpolation
+puts "There are #{players.size} players in the game:"
+
+# use the each method to itereate through all of the players
+players.each do |player|
+  puts player
+end
+
+# Iterate through the array of players and run a block that prints out just
+# the health of each player.
+
+players.each do |player|
+  puts player.health
+end
+=end
+
+# itereate through the array and w00t or blam each player then
+# print out the players status
+
+players.each do |player|
+  player.blam
+  player.w00t
+  player.w00t
+  puts player
+end
+
+players.pop()
+players.push(player4)
+
+players.each do |player|
+  player.blam
+  player.w00t
+  player.w00t
+  puts player
+end
