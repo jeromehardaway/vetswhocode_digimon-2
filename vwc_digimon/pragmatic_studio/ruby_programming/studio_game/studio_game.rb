@@ -36,48 +36,59 @@ class Player
   end
 end
 
+# Ex 20: Objects interacting
+
+# 1.1
+# create a new class called game under the Player class
+
+class Game
+  attr_reader :title # make title a readable attribute so it can be accessed outside
+  # of this class
+  
+  def initialize(title)
+    @title = title.capitalize
+    @players = [] # defince instance variable with empty array to hold players
+  end
+
+  # define a method that adds players to the array
+  def add_player(player)
+    @players << player # appends player objects to @players array
+  end
+
+  def play
+    puts "There are #{@players.size} players in #{@title}"
+    @players.each do |player|
+      puts player
+    end
+    @players.each do |player|
+      player.blam
+      player.w00t
+      player.w00t
+      puts player
+    end
+  end
+end
+
 # create player objects
 player1 = Player.new("moe")
 player2 = Player.new("larry", 60)
 player3 = Player.new("curly", 125)
-player4 = Player.new("shemp", 90)
 
-# create an array of players that contains all 3 player objects
-players = [player1, player2, player3]
+knuckleheads = Game.new("Knuckleheads")
+knuckleheads.add_player(player1)
+knuckleheads.add_player(player2)
+knuckleheads.add_player(player3)
+knuckleheads.play
 
-=begin
-# print out the the size of the players array using a string and interpolation
-puts "There are #{players.size} players in the game:"
+# bonus 
+# create a new game with new players
 
-# use the each method to itereate through all of the players
-players.each do |player|
-  puts player
-end
+player_1 = Player.new("alvin")
+player_2 = Player.new("simon")
+player_3 = Player.new("theodore")
 
-# Iterate through the array of players and run a block that prints out just
-# the health of each player.
-
-players.each do |player|
-  puts player.health
-end
-=end
-
-# itereate through the array and w00t or blam each player then
-# print out the players status
-
-players.each do |player|
-  player.blam
-  player.w00t
-  player.w00t
-  puts player
-end
-
-players.pop()
-players.push(player4)
-
-players.each do |player|
-  player.blam
-  player.w00t
-  player.w00t
-  puts player
-end
+chipmunks = Game.new("chipmunks")
+chipmunks.add_player(player_1)
+chipmunks.add_player(player_2)
+chipmunks.add_player(player_3)
+chipmunks.play
