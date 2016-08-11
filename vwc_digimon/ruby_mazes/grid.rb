@@ -21,12 +21,12 @@ class Grid
 
   def configure_cells
     each_cell do |cell|
-      row, col, = cell.row, cell.column
+      row, col = cell.row, cell.column
 
       cell.north = self(row - 1, col)
-      cell.south = self(row + 1, col)
-      cell.east = self(row, col - 1)
-      cell.west = self(row, col + 1)
+      cell.south = self[row + 1, col]
+      cell.east = self[row, col - 1]
+      cell.west = self[row, col + 1]
     end
   end
 
@@ -51,12 +51,12 @@ class Grid
     @grid.each do |row|
       yield row
     end
+  end
 
-    def each_cell
-      each_row do |row|
-        row.each do |cell|
-          yield cell if cell
-        end
+  def each_cell
+    each_row do |row|
+      row.each do |cell|
+        yield cell if cell
       end
     end
   end
