@@ -1,4 +1,5 @@
 class Player
+
   attr_accessor :name
   attr_reader :health
 
@@ -28,6 +29,11 @@ class Player
   def strong?
     @health > 100
   end
+
+  def <=>(other)
+    other.score <=> score
+  end
+
 end
 
 # example code
