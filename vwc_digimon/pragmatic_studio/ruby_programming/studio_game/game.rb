@@ -4,7 +4,6 @@ require_relative 'game_turn'
 require_relative 'treasure_trove'
 
 class Game
-
   attr_reader :title
 
   def initialize(title)
@@ -43,6 +42,10 @@ class Game
   def print_name_and_health(player)
     puts "#{player.name} (#{player.health})"
   end
+  # finds the sum of all treasures found
+  def total_points
+    @players.reduce(0) { |sum, player| sum + player.points }
+  end
 
   def print_stats
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
@@ -65,8 +68,13 @@ class Game
       puts "#{format_player_name} #{player.health}"
     end
 
-  end
+    @players.each do |player|
+      puts "\n#{player.name} points totals:"
+      puts "#{player.points} grand total points"
+    end
 
+    puts "\n#{total_points} total points from treasuers found"
+  end
 end
 
 # example code
