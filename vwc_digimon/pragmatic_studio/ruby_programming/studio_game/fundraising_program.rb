@@ -33,7 +33,9 @@ project3 = Project.new("Vacation", 0, 7000)
 
 # create project array and add projects
 projects = [project1, project2, project3]
+
 =begin
+
 # iterate through each project and print details
 projects.each do |project|
   puts project
@@ -51,8 +53,9 @@ projects.each do |project|
   puts project
 end
 
-# remove one project from your list, add a new project, and print out an updated list of project information.
 =end
+
+# remove one project from your list, add a new project, and print out an updated list of project information.
 projects.pop
 project4 = Project.new("Food", 50, 70)
 projects.push(project4)
