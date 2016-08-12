@@ -13,4 +13,8 @@ module TreasureTrove
     Treasure.new(:crowbar, 400)
   ]
 
+  def self.random
+    TREASURES.sample # .sample gets a random element from an array
+  end
+
 end
