@@ -5,6 +5,7 @@ class Player
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
+    @found_treasure = Hash.new(0) # add hash with default value of 0
   end
 
   def to_s
@@ -30,7 +31,17 @@ class Player
   end
 
   def <=>(other)
-    score <=> other.score
+    other.score <=> score
+  end
+
+  def found_treasure(treasure) # add method that takes Treasure object param
+    @found_treasure[treasure.name] += treasure.points # add points to any existing points
+    puts "#{@name} found a #{treasure.name} worth #{treasure.points} points"
+    puts "#{@name} treasures: #{@found_treasure}"
+  end
+
+  def points
+    @found_treasure.values.reduce(0, :+)
   end
 end
 
