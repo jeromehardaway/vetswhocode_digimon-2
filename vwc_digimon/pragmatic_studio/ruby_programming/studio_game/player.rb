@@ -1,5 +1,4 @@
 class Player
-
   attr_accessor :name
   attr_reader :health
 
@@ -33,7 +32,6 @@ class Player
   def <=>(other)
     score <=> other.score
   end
-
 end
 
 # example code
