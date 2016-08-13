@@ -33,4 +33,24 @@ describe Player do
     @player.blam
     @player.health.should == @initial_health - 10
   end
+
+  context "strong player has a health value greater than 100" do
+    before do
+      @player = Player.new("larry", 150)
+    end
+
+    it "is strong" do
+      @player.should be_strong # syntax for predicate methods (strong? stupid?)
+    end
+  end
+
+  context "wimpy player has a health value of 100 or less" do
+    before do
+      @player = Player.new("moe", 100)
+    end
+
+    it "is wimpy" do
+      @player.should_not be_strong
+    end
+  end
 end
