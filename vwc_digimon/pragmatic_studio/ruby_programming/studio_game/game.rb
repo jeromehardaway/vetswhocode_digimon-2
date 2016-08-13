@@ -33,11 +33,20 @@ class Game
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
 
     puts "\n#{@game_title} Statistics"
+
     puts "\n#{strong_players.size} strong players:"
     strong_players.each { |player| puts "#{player.name} (#{player.health})"}
 
     puts "\n#{wimpy_players.size} wimpy players:"
     wimpy_players.each { |player| puts "#{player.name} (#{player.health})"}
+
+    puts "\n#{@game_title} High Scores:"
+
+    sorted_players = @players.sort { |a, b| b.score <=> a.score }
+    sorted_players.each do |player|
+      format_player_name = player.name.ljust(20, '.')
+      puts "#{format_player_name} #{player.score}"
+    end
   end
 end
 # example code
