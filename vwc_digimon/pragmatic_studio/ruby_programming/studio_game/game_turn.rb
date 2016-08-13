@@ -1,5 +1,6 @@
 require_relative 'player'
 require_relative 'dice'
+require_relative 'treasure_trove'
 # module that is run in play method within Game class
 module GameTurn
   def self.take_turn(player) #module methods use sef.xxx
@@ -14,5 +15,8 @@ module GameTurn
     else
       player.w00t
     end
+    # print random treasure for current player
+    treasure = TreasureTrove.random
+    puts "#{player.name} found a #{treasure.name} worth #{treasure.points}"
   end
 end
