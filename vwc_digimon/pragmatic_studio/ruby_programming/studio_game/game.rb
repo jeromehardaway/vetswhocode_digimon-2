@@ -5,6 +5,7 @@ class Game
   def initialize(game_title) # initialize method that allows us to create games
     @game_title = game_title.capitalize # capitalize title
     @players = Array.new # create an empty array for players
+
   end
 
   def add_player(new_player) # define a method that adds players
@@ -24,4 +25,17 @@ class Game
       puts player
     end
   end
+end
+# example code
+
+if __FILE__ == $0
+  player_1 = Player.new("alvin")
+  player_2 = Player.new("simon")
+  player_3 = Player.new("theodore")
+
+  chipmunks = Game.new("chipmunks")
+  chipmunks.add_player(player_1)
+  chipmunks.add_player(player_2)
+  chipmunks.add_player(player_3)
+  chipmunks.play
 end
