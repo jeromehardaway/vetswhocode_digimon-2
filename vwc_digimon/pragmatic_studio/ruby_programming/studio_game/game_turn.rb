@@ -1,12 +1,12 @@
 require_relative 'player'
-require_relative 'die'
-require_relative 'treasure_trove'
-
+require_relative 'dice'
+# module that is run in play method within Game class
 module GameTurn
+  def self.take_turn(player) #module methods use sef.xxx
+    dice = Dice.new
+    number_rolled = dice.roll
 
-  def self.take_turn(player)
-    die = Die.new
-    case die.roll
+    case number_rolled
     when 1..2
       player.blam
     when 3..4
@@ -14,9 +14,5 @@ module GameTurn
     else
       player.w00t
     end
-
-    treasure = TreasureTrove.random
-    player.found_treasure(treasure)
   end
-
 end
