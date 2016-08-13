@@ -20,7 +20,7 @@ class Game
 
     # iterate through the players and blam, w000t, and print details
     @players.each do |player|
-      dice = Die.new
+      dice = Dice.new
       number_rolled = dice.roll
 
       case number_rolled

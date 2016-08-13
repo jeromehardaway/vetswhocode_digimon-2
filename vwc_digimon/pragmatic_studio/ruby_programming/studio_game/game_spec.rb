@@ -12,7 +12,7 @@ describe Game do
   end
 
   it "w00ts the player if a high number is rolled" do
-    Die.any_instance.stub(:roll).and_return(5)
+    Dice.any_instance.stub(:roll).and_return(5)
 
     @game.play
 
@@ -20,7 +20,7 @@ describe Game do
   end
 
   it "skips the player if a mediumnumber is rolled" do
-    Die.any_instance.stub(:roll).and_return(3)
+    Dice.any_instance.stub(:roll).and_return(3)
 
     @game.play
 
@@ -28,7 +28,7 @@ describe Game do
   end
 
   it "blams the player when a low number is rolled" do
-    Die.any_instance.stub(:roll).and_return(1)
+    Dice.any_instance.stub(:roll).and_return(1)
 
     @game.play
 
