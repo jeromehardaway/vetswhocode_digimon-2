@@ -29,21 +29,24 @@ class Game
     end
   end
 
+  def print_name_and_health(player)
+    puts "#{player.name} (#{player.health})"
+  end
+
   def print_stats # method that prints the stats for players
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
 
     puts "\n#{@game_title} Statistics"
 
     puts "\n#{strong_players.size} strong players:"
-    strong_players.each { |player| puts "#{player.name} (#{player.health})"}
+    strong_players.each { |player| print_name_and_health(player) }
 
     puts "\n#{wimpy_players.size} wimpy players:"
-    wimpy_players.each { |player| puts "#{player.name} (#{player.health})"}
+    wimpy_players.each { |player| print_name_and_health(player) }
 
     puts "\n#{@game_title} High Scores:"
 
-    sorted_players = @players.sort { |a, b| b.score <=> a.score }
-    sorted_players.each do |player|
+    @players.sort.each do |player|
       format_player_name = player.name.ljust(20, '.')
       puts "#{format_player_name} #{player.score}"
     end
