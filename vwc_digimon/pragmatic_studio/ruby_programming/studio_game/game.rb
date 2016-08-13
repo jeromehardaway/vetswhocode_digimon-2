@@ -1,6 +1,7 @@
 require_relative 'player'
 require_relative 'dice'
 require_relative 'game_turn'
+require_relative 'treasure_trove'
 # create a new class game
 class Game
   attr_reader :game_title # create a readable attribute to access outside class
@@ -19,6 +20,13 @@ class Game
     puts "There are #{@players.size} players in #{@game_title}"
     @players.each { |player| puts player }
 
+    # print treasure trove
+    treasure = TreasureTrove::TREASURES
+    puts "\nThere are #{treasure.size} treasures to be found"
+    treasure.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points} points"
+    end
+
     # iterate through the players and blam, w000t, and print details
     1.upto(rounds) do |round|
       puts "\nRound: #{round}"
@@ -27,6 +35,7 @@ class Game
         puts player
       end
     end
+
   end
 
   def print_name_and_health(player)
