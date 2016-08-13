@@ -32,6 +32,11 @@ class Player
   def strong?
     @health > 100
   end
+
+  def <=>(player)
+    player.score <=> score
+  end
+  # @player.each { |player_score, score| player_score <=> score }
 end
 
 if __FILE__ == $0
