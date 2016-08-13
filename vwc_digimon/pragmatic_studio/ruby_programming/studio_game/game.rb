@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'die'
 # create a new class game
 class Game
   attr_reader :game_title # create a readable attribute to access outside class
@@ -19,9 +20,17 @@ class Game
 
     # iterate through the players and blam, w000t, and print details
     @players.each do |player|
-      player.blam
-      player.w00t
-      player.w00t
+      dice = Die.new
+      number_rolled = dice.roll
+
+      case number_rolled
+      when 1..2
+        player.blam
+      when 3..4
+        puts "#{player.name} was skipped."
+      else
+        player.w00t
+      end
       puts player
     end
   end
