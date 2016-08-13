@@ -14,15 +14,18 @@ class Game
     @players << new_player
   end
 
-  def play # create instance method to play a game
+  def play(rounds) # create instance method to play a game
     # iterate through each player and print details
     puts "There are #{@players.size} players in #{@game_title}"
     @players.each { |player| puts player }
 
     # iterate through the players and blam, w000t, and print details
-    @players.each do |player|
-      GameTurn.take_turn(player)
-      puts player
+    1.upto(rounds) do |round|
+      puts "\nRound: #{round}"
+      @players.each do |player|
+        GameTurn.take_turn(player)
+        puts player
+      end
     end
   end
 end
