@@ -1,5 +1,5 @@
 require_relative 'player'
-require_relative 'die'
+require_relative 'dice'
 # create a new class game
 class Game
   attr_reader :game_title # create a readable attribute to access outside class
