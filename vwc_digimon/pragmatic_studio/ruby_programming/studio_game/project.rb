@@ -1,7 +1,7 @@
 require_relative 'project_request'
 
 class Project
-  attr_reader  :target_amount # allows details to be accessed outside class
+  attr_reader  :target_amount, :initial_amount # allows details to be accessed outside class
   attr_accessor :project_name # allows name to be changed
 
   def initialize(project_name, initial_amount=0, target_amount=0)
@@ -20,7 +20,6 @@ class Project
 
   def remove_funds(fund_amount)
     @initial_amount -= fund_amount # remove funds from project
-    to_s
   end
 
   def funding_still_needed
