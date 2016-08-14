@@ -56,16 +56,17 @@ describe Player do
   end
 
   context "in a collection of players" do
-  before do
-    @player1 = Player.new("moe", 100)
-    @player2 = Player.new("larry", 200)
-    @player3 = Player.new("curly", 300)
+    before do
+      @player1 = Player.new("moe", 100)
+      @player2 = Player.new("larry", 200)
+      @player3 = Player.new("curly", 300)
 
-    @players = [@player1, @player2, @player3]
-  end
+      @players = [@player1, @player2, @player3]
+    end
 
-  it "is sorted by highest to lowest score" do
-    @players.sort.should == [@player3, @player2, @player1]
+    it "is sorted by highest to lowest score" do
+      @players.sort.should == [@player3, @player2, @player1]
+    end
   end
 
   it "computes points as the sum of all treasure points" do
@@ -83,5 +84,4 @@ describe Player do
 
     @player.points.should == 500
   end
-end
 end
