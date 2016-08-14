@@ -43,10 +43,10 @@ class Player
     puts "#{@name} found a #{treasure.name} worth #{treasure.points} points."
     puts "#{@name} treasures: #{@found_treasure}"
   end
-   #method 'points' that returns the sum of all the player's treasure points
-   def points
-     @found_treasure.values.reduce(0, :+)
-   end
+  #method 'points' that returns the sum of all the player's treasure points
+  def points
+   @found_treasure.values.reduce(0, :+)
+  end
 end
 
 if __FILE__ == $0

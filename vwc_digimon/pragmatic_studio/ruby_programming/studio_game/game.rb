@@ -5,10 +5,10 @@ require_relative 'treasure_trove'
 # create a new class game
 class Game
   attr_reader :game_title # create a readable attribute to access outside class
+  
   def initialize(game_title) # initialize method that allows us to create games
     @game_title = game_title.capitalize # capitalize title
     @players = Array.new # create an empty array for players
-
   end
 
   def add_player(new_player) # define a method that adds players
@@ -35,7 +35,6 @@ class Game
         puts player
       end
     end
-
   end
 
   def print_name_and_health(player)
@@ -46,6 +45,12 @@ class Game
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
 
     puts "\n#{@game_title} Statistics"
+
+    # itereate through each player and print out total points
+    @players.each do |player|
+      puts "\n#{player.name}'s score:"
+      puts "#{player.points} grand total points"
+    end
 
     puts "\n#{strong_players.size} strong players:"
     strong_players.each { |player| print_name_and_health(player) }
@@ -58,11 +63,6 @@ class Game
     @players.sort.each do |player|
       format_player_name = player.name.ljust(20, '.')
       puts "#{format_player_name} #{player.score}"
-    end
-    # itereate through each player and print out total points
-    @players.each do |player|
-      puts "\n#{player.name}'s score:"
-      puts "#{player.points} grand total points"
     end
   end
 end
