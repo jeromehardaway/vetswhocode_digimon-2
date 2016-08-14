@@ -64,6 +64,8 @@ class Game
       format_player_name = player.name.ljust(20, '.')
       puts "#{format_player_name} #{player.score}"
     end
+
+    puts "\n#{total_points} total points from treasures found"
   end
 
   def total_points
