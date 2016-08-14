@@ -9,11 +9,11 @@ class Player
   end
 
   def to_s # prints a hello message from Player
-    "I'm #{@name} with a health of #{@health} and a score of #{score}" #called method score and used in string interpolation
+    "I'm #{@name} with health = #{@health}, points = #{points}, and score = #{score}" #called method score and used in string interpolation
   end
 
   def score # virtual accessor method to determine score
-    @health + @name.length
+    @health + points
   end
 
   def blam
