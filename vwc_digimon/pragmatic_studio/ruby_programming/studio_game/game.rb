@@ -45,10 +45,12 @@ class Game
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
 
     puts "\n#{@game_title} Statistics"
-
-    # itereate through each player and print out total points
-    @players.each do |player|
-      puts "\n#{player.name}'s score:"
+    #print each players points on per treasure basis
+    @players.sort.each do |player|
+      puts "\n#{player.name} points totals:"
+      player.each_found_treasure do |treasure|
+        puts "#{treasure.points} total #{treasure.name} points"
+      end
       puts "#{player.points} grand total points"
     end
 
