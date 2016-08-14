@@ -1,3 +1,4 @@
+require_relative 'treasure_trove'
 class Player
   attr_reader :health # use attributes can be accessed outside of class
   attr_accessor :name # read and write attribute
@@ -46,6 +47,12 @@ class Player
   #method 'points' that returns the sum of all the player's treasure points
   def points
    @found_treasure.values.reduce(0, :+)
+  end
+
+  def each_found_treasure
+    @found_treasure.each do |name, points|
+      yield Treasure.new(name, points)
+    end
   end
 end
 
