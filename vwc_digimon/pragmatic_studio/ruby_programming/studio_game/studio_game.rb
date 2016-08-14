@@ -12,7 +12,11 @@ knuckleheads = Game.new("knuckleheads")
 knuckleheads.add_player(player1)
 knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
-knuckleheads.play(2)
+
+# if points exceed 2000 game will end (see play method)
+knuckleheads.play(10) do
+  knuckleheads.total_points >= 2000
+end
 knuckleheads.print_stats
 
 
