@@ -5,7 +5,7 @@ require_relative 'treasure_trove'
 # create a new class game
 class Game
   attr_reader :game_title # create a readable attribute to access outside class
-  
+
   def initialize(game_title) # initialize method that allows us to create games
     @game_title = game_title.capitalize # capitalize title
     @players = Array.new # create an empty array for players
@@ -63,6 +63,12 @@ class Game
     @players.sort.each do |player|
       format_player_name = player.name.ljust(20, '.')
       puts "#{format_player_name} #{player.score}"
+    end
+  end
+
+  def total_points
+    @players.reduce(0) do |sum, player|
+      sum += player.points
     end
   end
 end
