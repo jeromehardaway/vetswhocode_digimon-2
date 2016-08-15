@@ -64,10 +64,9 @@ class Game
     wimpy_players.each { |player| print_name_and_health(player) }
 
     puts "\n#{@game_title} High Scores:"
-
+    #prints high scores for each player
     @players.sort.each do |player|
-      format_player_name = player.name.ljust(20, '.')
-      puts "#{format_player_name} #{player.score}"
+      puts high_score(player)
     end
 
     puts "\n#{total_points} total points from treasures found"
@@ -85,6 +84,21 @@ class Game
       name, health = line.split(',')
       player = Player.new(name, Integer(health))
       add_player(player)
+    end
+  end
+
+  def high_score(player)
+    format_player_name = player.name.ljust(20, '.')
+    "#{format_player_name} #{player.score}"
+  end
+
+  # prints scores to a file
+  def save_high_scores(filename="high_scores.txt")
+    File.open(filename, 'w') do |file|
+      file.puts "#{@game_title} high scores:"
+      @players.sort.each do |player|
+        file.puts high_score(player)
+      end
     end
   end
 end
