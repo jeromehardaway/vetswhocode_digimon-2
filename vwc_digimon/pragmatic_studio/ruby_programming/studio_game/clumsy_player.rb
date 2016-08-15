@@ -2,6 +2,16 @@ require_relative 'player'
 require_relative 'treasure_trove'
 # define a ClumsyPlayer class that inherits from player
 class ClumsyPlayer < Player
+  attr_reader :boost
+
+  def initialize(name, health=100, boost=1)
+    super(name, health)
+    @boost = boost
+  end
+
+  def w00t
+    @boost.times { super }
+  end
 
   def found_treasure(treasure)
     # set damaged_treasure to an instance of class Treasure that takes original treasure name and half the original points as parameters
