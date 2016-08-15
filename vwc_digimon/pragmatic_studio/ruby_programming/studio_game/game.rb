@@ -29,8 +29,8 @@ class Game
 
     # iterate through the players and blam, w000t, and print details
     1.upto(rounds) do |round|
-      if block_given?
-        break if yield
+      if block_given? # check to see if block was provided
+        break if yield # if block was given yield to it
       end
       puts "\nRound: #{round}"
       @players.each do |player|
