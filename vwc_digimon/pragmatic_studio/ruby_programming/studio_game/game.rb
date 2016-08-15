@@ -81,9 +81,7 @@ class Game
   # method that takes filename param and loads csv file
   def load_players(filename)
     File.readlines(filename).each do |line|
-      name, health = line.split(',')
-      player = Player.new(name, Integer(health))
-      add_player(player)
+      add_player(Player.from_csv(line))
     end
   end
 
