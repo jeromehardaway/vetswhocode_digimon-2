@@ -8,11 +8,16 @@ player3 = Player.new("curly", 125)
 
 # create new game object
 knuckleheads = Game.new("knuckleheads")
+#ARGV loads csv file from command line if given
+knuckleheads.load_players(ARGV.shift || "players.csv")
 # add players to game
+=begin
 knuckleheads.add_player(player1)
 knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
+=end
 
+# prompts the user for how many rounds the want to play
 loop do
   puts "\nHow many game rounds? ('quit' to exit)"
   response = gets.chomp.downcase
@@ -23,7 +28,7 @@ loop do
       # if points exceed 2000 game will end (see play method)
       knuckleheads.total_points >= 2000
     end
-  when "quit" || "exit"
+  when "quit", "exit"
     knuckleheads.print_stats
     break
   else
