@@ -1,15 +1,20 @@
 require_relative 'player'
 require_relative 'game'
+require_relative 'clumsy_player'
 
 # create player objects
 player1 = Player.new("moe")
 player2 = Player.new("larry", 65)
 player3 = Player.new("curly", 125)
+klutz = ClumsyPlayer.new("klutz", 105)
 
 # create new game object
 knuckleheads = Game.new("knuckleheads")
 #ARGV loads csv file from command line if given
 knuckleheads.load_players(ARGV.shift || "players.csv")
+
+knuckleheads.add_player(klutz)
+
 # add players to game
 =begin
 knuckleheads.add_player(player1)
