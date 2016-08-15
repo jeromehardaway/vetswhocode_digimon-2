@@ -13,11 +13,24 @@ knuckleheads.add_player(player1)
 knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
 
-# if points exceed 2000 game will end (see play method)
-knuckleheads.play(10) do
-  knuckleheads.total_points >= 2000
+loop do
+  puts "\nHow many game rounds? ('quit' to exit)"
+  response = gets.chomp.downcase
+
+  case response
+  when /^\d+$/
+    knuckleheads.play(response.to_i) do
+      # if points exceed 2000 game will end (see play method)
+      knuckleheads.total_points >= 2000
+    end
+  when "quit" || "exit"
+    knuckleheads.print_stats
+    break
+  else
+    puts "Please enter a number or 'quit'"
+  end
 end
-knuckleheads.print_stats
+
 
 
 =begin
