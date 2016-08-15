@@ -2,6 +2,7 @@ require_relative 'player'
 require_relative 'dice'
 require_relative 'game_turn'
 require_relative 'treasure_trove'
+require 'csv'
 # create a new class game
 class Game
   attr_reader :game_title # create a readable attribute to access outside class
@@ -80,8 +81,9 @@ class Game
 
   # method that takes filename param and loads csv file
   def load_players(filename)
-    File.readlines(filename).each do |line|
-      add_player(Player.from_csv(line))
+    CSV.foreach(filename) do |row|
+      player = Player.new(row[0], row[1].to_i)
+      add_player(player)
     end
   end
 
