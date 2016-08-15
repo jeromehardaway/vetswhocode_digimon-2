@@ -78,6 +78,15 @@ class Game
       sum += player.points
     end
   end
+
+  # method that takes filename param and loads csv file
+  def load_players(filename)
+    File.readlines(filename).each do |line|
+      name, health = line.split(',')
+      player = Player.new(name, Integer(health))
+      add_player(player)
+    end
+  end
 end
 # example code
 
