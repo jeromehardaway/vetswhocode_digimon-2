@@ -1,12 +1,16 @@
 require_relative 'player'
 require_relative 'game'
 require_relative 'clumsy_player'
+require_relative 'berserk_player'
 
 # create player objects
 player1 = Player.new("moe")
 player2 = Player.new("larry", 65)
 player3 = Player.new("curly", 125)
-klutz = ClumsyPlayer.new("klutz", 105)
+klutz = ClumsyPlayer.new("klutz", 105, 1)
+berserker = BerserkPlayer.new("berserk", 50)
+
+clumsy = ClumsyPlayer.new("klutz", 105, 3)
 
 # create new game object
 knuckleheads = Game.new("knuckleheads")
@@ -14,6 +18,8 @@ knuckleheads = Game.new("knuckleheads")
 knuckleheads.load_players(ARGV.shift || "players.csv")
 
 knuckleheads.add_player(klutz)
+knuckleheads.add_player(berserker)
+knuckleheads.add_player(clumsy)
 
 # add players to game
 =begin
@@ -29,10 +35,7 @@ loop do
 
   case response
   when /^\d+$/
-    knuckleheads.play(response.to_i) do
-      # if points exceed 2000 game will end (see play method)
-      knuckleheads.total_points >= 2000
-    end
+    knuckleheads.play(response.to_i)
   when "quit", "exit"
     knuckleheads.print_stats
     break
