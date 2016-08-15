@@ -1,4 +1,5 @@
 require_relative 'treasure_trove'
+
 class Player
   attr_reader :health # use attributes can be accessed outside of class
   attr_accessor :name # read and write attribute
@@ -53,11 +54,6 @@ class Player
     @found_treasure.each do |name, points|
       yield Treasure.new(name, points)
     end
-  end
-
-  def self.from_csv(string)
-    name, health = string.split(',')
-    Player.new(name, Integer(health))
   end
 end
 
