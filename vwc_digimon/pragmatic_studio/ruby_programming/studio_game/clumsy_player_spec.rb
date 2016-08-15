@@ -27,4 +27,22 @@ describe ClumsyPlayer do
 
     yielded.should == [Treasure.new(:hammer, 75), Treasure.new(:crowbar, 200)]
   end
+
+  context "with a boost factor" do
+    before do
+      @initial_health = 100
+      @boost = 5
+      @player = ClumsyPlayer.new("klutz", @initial_health, @boost)
+    end
+
+    it "has a boost factor" do
+      @player.boost.should == 5
+    end
+
+    it "gets boost factor number of w00ts when w00ted" do
+      @player.w00t
+
+      @player.health.should == @initial_health + (15 * @boost)
+    end
+  end
 end
