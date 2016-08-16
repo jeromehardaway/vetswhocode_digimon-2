@@ -5,7 +5,7 @@ require_relative 'loaded_die'
 # module that is run in play method within Game class
 module GameTurn
   def self.take_turn(player) #module methods use sef.xxx
-    dice = LoadedDie.new
+    dice = Die.new
     number_rolled = dice.roll
 
     case number_rolled
