@@ -1,6 +1,9 @@
 require_relative 'treasure_trove'
+require_relative 'playable'
 
 class Player
+  include Playable # add playable module to this class
+
   attr_reader :health # use attributes can be accessed outside of class
   attr_accessor :name # read and write attribute
 
@@ -18,22 +21,8 @@ class Player
     @health + points
   end
 
-  def blam
-    @health -= 10 # decreases a players health by 10
-    puts "#{@name} got blammed!"
-  end
-
-  def w00t
-    @health += 15 # increases a players health by 15
-    puts "#{@name} got w00ted!"
-  end
-
   def name=(name)
     @name = name.capitalize
-  end
-
-  def strong?
-    @health > 100
   end
 
   def <=>(player)# @player.each { |player_score, score| player_score <=> score }
