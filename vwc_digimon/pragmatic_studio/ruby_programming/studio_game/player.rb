@@ -4,8 +4,7 @@ require_relative 'playable'
 class Player
   include Playable # add playable module to this class
 
-  attr_reader :health # use attributes can be accessed outside of class
-  attr_accessor :name # read and write attribute
+  attr_accessor :name, :health # read and write attribute
 
   def initialize(name, health=100) #set default health to 100
     @name = name.capitalize
