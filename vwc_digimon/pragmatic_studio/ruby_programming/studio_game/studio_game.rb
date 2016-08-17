@@ -13,7 +13,7 @@ berserker = BerserkPlayer.new("berserk", 50)
 clumsy = ClumsyPlayer.new("klutz", 105, 3)
 
 # create new game object
-knuckleheads = Game.new("knuckleheads")
+knuckleheads = StudioGame::Game.new("knuckleheads")
 #ARGV loads csv file from command line if given
 knuckleheads.load_players(ARGV.shift || "players.csv")
 
