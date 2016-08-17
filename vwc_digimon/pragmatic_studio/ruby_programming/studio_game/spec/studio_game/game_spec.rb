@@ -1,6 +1,7 @@
-require_relative 'game'
+require 'studio_game/game'
 # Rspec test for game.rb
 module StudioGame
+
   describe Game do
     before do
       $stdout = StringIO.new

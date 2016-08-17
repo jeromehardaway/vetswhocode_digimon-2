@@ -1,7 +1,8 @@
-require_relative 'player'
-require_relative 'treasure_trove'
+require 'studio_game/player'
+require 'studio_game/treasure_trove'
 # Rspec tests for player.rb
 module StudioGame
+
   describe Player do
     # examples go here
     before do

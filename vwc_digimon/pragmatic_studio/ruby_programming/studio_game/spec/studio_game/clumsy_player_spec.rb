@@ -1,7 +1,7 @@
-require_relative 'clumsy_player'
+require 'studio_game/clumsy_player'
 
 module StudioGame
-  
+
   describe ClumsyPlayer do
     before do
       @player = ClumsyPlayer.new("klutz")

@@ -1,6 +1,7 @@
-require_relative 'berserk_player'
+require 'studio_game/berserk_player'
 
 module StudioGame
+
   describe BerserkPlayer do
     before do
       $stdout = StringIO.new
