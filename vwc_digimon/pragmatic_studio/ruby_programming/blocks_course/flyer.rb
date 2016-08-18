@@ -74,6 +74,49 @@ puts "Total miles flown: #{total}"
 # iterate through the hash and display the airline promotions
 promotions = { "United" => 1.5, "Delta" => 2.0, "Lufthansa" => 2.5 }
 
-promotions.each do |name, promotion|
-  puts "Earn #{promotion}x miles by flying #{name}!"
+promotions.each do |airline, promotion|
+  puts "Earn #{promotion}x miles by flying #{airline}!"
+end
+
+# Pop Quiz
+
+# Methods such as each that invoke a block of code repeatedly are called 'iterators'
+# The each method iterates through each element in a collection and assigns each element in turn to the 'block paramters'
+# In the code below, 'type' is the block parameter. Block parameters are 'local' variables. They only live for the life of the block
+
+# flavors = ['chocolate', 'vanilla', 'cinnamon']
+# flavors.each do |type|
+#   puts type.reverse
+# end
+
+# In the example above, how many times is the code block run? > 3
+
+# Given the following has write a block that produces the output
+# $2.0 for a cup of chocolate
+
+desserts = { "chocolate" => 1.00, "vanilla" => 0.75, "cinnamon" => 1.25 }
+
+desserts.each do |item, amount|
+  puts "$#{amount * 2} for a cup of #{item}"
+end
+
+
+# Bonus
+# fill in the ... to print out each prime number
+require 'mathn'
+
+# Prime.each { |number| ... }
+# Warning program will never exit (ctrl - z) to exit
+# Prime.each do |number|
+#   puts number
+# end
+
+# try to come out with this output:
+# Flyer 1 could earn 1500.0 miles by flying United!
+# by combining the two iterators
+
+flyers.each do |flyer|
+  promotions.each do |airline, promotion|
+    puts "#{flyer.name} could earn #{flyer.miles_flown * promotion} miles by flying #{airline}!"
+  end
 end
