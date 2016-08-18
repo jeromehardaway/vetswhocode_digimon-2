@@ -54,3 +54,26 @@ puts flyers
 #    puts "#{count} pushup"
 #    puts "#{count} chinup"
 #  end
+
+# iterate through all the flyers and print out their name and miles following
+# example: Flyer 1 - 1000 miles
+
+flyers.each do |flyer|
+  puts "#{flyer.name} - #{flyer.miles_flown} miles"
+end
+
+
+# tally up the total miles flown
+total = 0
+flyers.each do |miles|
+  total += miles.miles_flown
+end
+
+puts "Total miles flown: #{total}"
+
+# iterate through the hash and display the airline promotions
+promotions = { "United" => 1.5, "Delta" => 2.0, "Lufthansa" => 2.5 }
+
+promotions.each do |name, promotion|
+  puts "Earn #{promotion}x miles by flying #{name}!"
+end
