@@ -33,3 +33,17 @@ puts flyers.any? { |flyer| flyer.status == :platinum }
 
 # find the first bronze status memeber on the list
 puts flyers.detect { |flyer| flyer.status == :bronze }
+
+# Pop Quiz
+
+# The reject method returns an array containing all elements for which the block is 'false'.
+
+# The any? method returns 'true' if the block returns a value other than false or nil
+
+# The 'select' method returns an array containing all elements for which the block is true (not false or nil).
+
+# The detect method returns the 'first' element for which the block is true(not nil or false)
+
+# In the code below what is the block parameter?
+# first_gold_flyer = flyers.select { |flyer| flyer.status == :gold }
+# > flyer 
