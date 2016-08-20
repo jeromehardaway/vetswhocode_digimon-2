@@ -25,6 +25,10 @@ class Playlist
   def each
     @songs.each { |song| yield song }
   end
+
+  def play_songs
+    each { |song| song.play }
+  end
 end
 
 # create new song objects
@@ -39,4 +43,7 @@ playlist1.add_song(song2)
 playlist1.add_song(song3)
 
 # define an each method to run the code below
-playlist1.each { |song| song.play }
+# playlist1.each { |song| song.play }
+
+# define a play_songs method in class Playlist to run the code below
+playlist1.play_songs
