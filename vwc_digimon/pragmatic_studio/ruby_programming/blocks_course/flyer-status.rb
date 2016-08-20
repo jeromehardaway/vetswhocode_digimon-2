@@ -88,3 +88,21 @@ puts lufthansa_conversion
 total_kilometers = flyers.map { |flyer| flyer.miles_flown * 1.6 }.reduce(0, :+)
 
 puts "Total kilometers flown for all passengers: #{total_kilometers}"
+
+# Lufthansa has commissioned a bonus requirement for you: Tally up all the kilometers flown by bronze flyers. Chain together several Enumerable methods to compute the total.
+
+#kilometers_by_bronze_flyers = flyers.select { |flyer| flyer.status == :bronze }.reduce(0) { |sum, miles| sum + (miles.miles_flown * 1.6) }
+
+# or
+
+kilometers_by_bronze_flyers = flyers.select { |flyer| flyer.status == :bronze }.map { |flyer| flyer.miles_flown * 1.6}.reduce(0, :+)
+
+
+puts "Bronze flyers total in km: #{kilometers_by_bronze_flyers}"
+
+# The airline would also like to reward the flyer who has flown the most miles. The Enumerable module offers a convenient method for finding an object that has the maximum value returned from the given block: the max_by method. Use it to find the top flyer.
+
+# a.max_by(2) {|x| x.length } #=> ["albatross", "horse"]
+
+most_frequent_flyer = flyers.max_by { |flyer| flyer.miles_flown }
+puts "\nOur most frequent flyer is: - #{most_frequent_flyer}"
