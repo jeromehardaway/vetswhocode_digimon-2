@@ -35,6 +35,12 @@ class Playlist
       song.play
     end
   end
+
+  def each_tagline
+    each do |song|
+      yield "#{song.song_name} - #{song.artist}"
+    end
+  end
 end
 
 # create new song objects
@@ -81,3 +87,6 @@ p playlist1.any? { |song| song.artist == "Mallrat" }
 
 # find first song by artist JoJo
 p playlist1.detect { |song| song.artist == "JoJo" }
+
+# define an each_tagline iterator method you can call like so:
+playlist1.each_tagline { |tagline| puts tagline }
