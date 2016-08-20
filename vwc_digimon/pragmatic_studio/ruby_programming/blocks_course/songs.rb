@@ -22,3 +22,12 @@ class Playlist
     @songs << song
   end
 end
+
+song1 = Song.new("Nobody", "Danelle & Salda", 3:34)
+song2 = Song.new("Tokyo Drift", "Mallrat", 2:51)
+song3 = Song.new("Fuck Apologies", "JoJo", 3:25)
+
+playlist1 = Playlist.new("My Favs")
+playlist1.add_song(song1)
+playlist1.add_song(song2)
+playlist1.add_song(song3)
