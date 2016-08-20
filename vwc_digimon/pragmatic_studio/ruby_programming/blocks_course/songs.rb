@@ -41,6 +41,10 @@ class Playlist
       yield "#{song.song_name} - #{song.artist}"
     end
   end
+
+  def each_by_artist(artist)
+    select { |song| song.artist == artist}.each { |song| yield song }
+  end
 end
 
 # create new song objects
@@ -90,3 +94,6 @@ p playlist1.detect { |song| song.artist == "JoJo" }
 
 # define an each_tagline iterator method you can call like so:
 playlist1.each_tagline { |tagline| puts tagline }
+
+# define an each_by_artist method that takes an artist's name and only yields songs by that artist, and will run the code below
+playlist1.each_by_artist("Mallrat") { |song| song.play }
