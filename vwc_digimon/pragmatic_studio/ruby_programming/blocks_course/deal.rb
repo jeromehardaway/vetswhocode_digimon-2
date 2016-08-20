@@ -61,3 +61,15 @@ n_times(5) do |n|
 end
 
 # Using the same technique, change the deal method so that it deals a specified number of cards, depending on the value of a method parameter. For example, calling deal with the number 10 as follows would deal 10 cards:
+
+# Define the progress method and use the built-in step method on the Numeric class to iterate from 0 to 100 in increments of 10, calling the block on each iteration and passing it the current percent complete.
+# example step(limit[, step]) {|i| block } → self
+# 1.step(10, 2) { |i| print i, " " }
+
+def progress
+  0.step(by: 10, to: 100) do |number|
+    yield(number)
+  end
+end
+
+progress { |percent| puts "#{percent}%" }
