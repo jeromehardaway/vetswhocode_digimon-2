@@ -10,6 +10,12 @@ class Song
   def play
     puts "Playing '#{song_name}' by #{artist} (#{duration} mins)"
   end
+
+  def each_filename
+    basename = "#{song_name}-#{artist}".gsub(" ", "-").downcase
+    file_extensions = %w(.mp3 .wav .aac)
+    file_extensions.each { |ext| yield basename + ext }
+  end
 end
 
 class Playlist
@@ -97,3 +103,6 @@ playlist1.each_tagline { |tagline| puts tagline }
 
 # define an each_by_artist method that takes an artist's name and only yields songs by that artist, and will run the code below
 playlist1.each_by_artist("Mallrat") { |song| song.play }
+
+# In the Song class, define an each_filename method you can call to get all the proper filenames, like so:
+song1.each_filename { |filename| puts filename }
