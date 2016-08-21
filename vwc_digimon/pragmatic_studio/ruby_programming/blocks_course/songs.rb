@@ -1,3 +1,5 @@
+require_relative 'my_enumerable'
+
 class Song
   attr_reader :song_name, :artist, :duration
 
@@ -19,7 +21,8 @@ class Song
 end
 
 class Playlist
-  include Enumerable
+  #include Enumerable
+  include MyEnumerable
 
   def initialize(name)
     @name = name
@@ -49,7 +52,7 @@ class Playlist
   end
 
   def each_by_artist(artist)
-    select { |song| song.artist == artist}.each { |song| yield song }
+    my_select { |song| song.artist == artist}.each { |song| yield song }
   end
 end
 
@@ -73,30 +76,33 @@ playlist1.add_song(song4)
 playlist1.play_songs
 
 # select all songs named Nobody
-nobody = playlist1.select { |song| song.song_name =~ /Nobody/ }
+nobody = playlist1.my_select { |song| song.song_name =~ /Nobody/ }
 p nobody
 
 # reject all songs not produced by Danelle and Salda
-other_artists = playlist1.reject { |song| song.artist =~ /Danelle & Salda/ }
+other_artists = playlist1.my_reject { |song| song.artist =~ /Danelle & Salda/ }
+puts "other artists"
 p other_artists
 
 # map all songs by artist Danelle & Salda
-danelle_and_salda = playlist1.map { |name| name.artist =~ /Danelle & Salda/ }
+danelle_and_salda = playlist1.my_map { |name| name.artist =~ /Danelle & Salda/ }
 p danelle_and_salda
 
 # songs to labels
-song_labels = playlist1.map { |song| "#{song.song_name} - #{song.artist}"}
+song_labels = playlist1.my_map { |song| "#{song.song_name} - #{song.artist}"}
 puts song_labels
 
 # find total duration of playlist1
-total_run_time = playlist1.map { |song| song.duration }.reduce(0, :+)
+total_run_time = playlist1.my_map { |song| song.duration }.reduce(0, :+)
 puts total_run_time
 
 # check to see if playlist1 has any songs by Mallrat
-p playlist1.any? { |song| song.artist == "Mallrat" }
+puts "My_any? method"
+p playlist1.my_any? { |song| song.artist == "Mallrat" }
 
 # find first song by artist JoJo
-p playlist1.detect { |song| song.artist == "JoJo" }
+puts "My Detect method"
+p playlist1.my_detect { |song| song.artist == "JoJo" }
 
 # define an each_tagline iterator method you can call like so:
 playlist1.each_tagline { |tagline| puts tagline }
