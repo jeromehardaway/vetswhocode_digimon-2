@@ -17,15 +17,15 @@ class Application
     puts "Writing to #{@environment} log file..."
   end
 
-  def in_production
+  def in_environment(new_environment)
     original_environment = @environment
-    @environment = :production
+    @environment = new_environment
     yield
   rescue Exception => exception
     puts exception.message
-    ensure
-      @environment = original_environment
-      puts "Reset environment to #{@environment} "
+  ensure
+    @environment = original_environment
+    puts "Reset environment to #{@environment} "
   end
 end
 
@@ -34,9 +34,24 @@ app = Application.new
 # define a method named in_production in the Application class that takes a block and runs it in the context of the production environment. Remember to switch back to the original environment after the block runs and print out the environment at the end so you see it was reset to the original environment. (Don't worry about exceptions just yet. We'll handle those in a separate step
 
 # The goal is to be able to call the in_production method with a block like so:
-app.in_production do
+# app.in_production do
+#   app.connect_to_database
+#   app.handle_request
+#   raise "Boom!"
+#   app.write_to_log
+# end
+
+# Rename the in_production method to in_environment and have it take a method parameter named new_environment
+# and be able to run the code below
+
+app.in_environment(:production) do
   app.connect_to_database
   app.handle_request
-  raise "Boom!"
+  app.write_to_log
+end
+
+app.in_environment(:test) do
+  app.connect_to_database
+  app.handle_request
   app.write_to_log
 end
