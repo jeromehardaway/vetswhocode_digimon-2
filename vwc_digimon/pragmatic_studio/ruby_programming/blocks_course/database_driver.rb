@@ -23,6 +23,26 @@ class DatabaseDriver
     # executes SQL
   end
 
+  def transactionally
+    begin_transaction
+    yield
+    commit_transaction
+  rescue Exception => exception
+    rollback_transaction
+  end
+
+  def begin_transaction
+    puts "Begin transaction..."
+  end
+
+  def commit_transaction
+    puts "Committed transaction."
+  end
+
+  def rollback_transaction
+    puts "Rolled back transaction!"
+  end
+
   def self.open(database, user, password)
     database_driver = self.new(database, user, password)
     database_driver.connect
@@ -44,13 +64,32 @@ end
 # driver.execute("SELECT * USERS")
 # driver.disconnect
 
-DatabaseDriver.open("my_database", "admin", "secret") do |driver|
-  driver.execute("SELECT * FROM ORDERS")
-  driver.execute("SELECT * FROM USERS")
-end
+# DatabaseDriver.open("my_database", "admin", "secret") do |driver|
+#   driver.execute("SELECT * FROM ORDERS")
+#   driver.execute("SELECT * FROM USERS")
+# end
+#
+# DatabaseDriver.open("my_database", "admin", "secret") do |driver|
+#   driver.execute("DELETE * FROM ORDERS")
+#   raise "Boom!"
+#   driver.execute("DELETE * FROM USERS")
+# end
+
+# DatabaseDriver.open("my_database", "admin", "secret") do |driver|
+#   driver.transactionally do
+#     driver.execute("UPDATE ORDERS SET status='completed'")
+#     driver.execute("DELETE * FROM SHIPPING_QUEUE")
+#   end
+#
+#   # not run in a transaction
+#   driver.execute("SELECT * FROM ORDERS")
+#   driver.execute("SELECT * FROM USERS")
+# end
 
 DatabaseDriver.open("my_database", "admin", "secret") do |driver|
-  driver.execute("DELETE * FROM ORDERS")
-  raise "Boom!"
-  driver.execute("DELETE * FROM USERS")
+  driver.transactionally do
+    driver.execute("UPDATE ORDERS SET status='completed'")
+    raise "Boom!"
+    driver.execute("DELETE * FROM SHIPPING_QUEUE")
+  end
 end
