@@ -39,18 +39,26 @@ class MailboxTextFormatter
     ]
     lines.join("\n")
   end
+  
+# this draws the lines across the columns -----
 
   def separator
     "+#{column_widths.map { |width| '-' * (width + 2)}.join("+")}+"
   end
+  
+#this determines the width of the columns
 
   def column_widths
     columns.map { |column| column.max_by { |cell| cell.length }.length }
   end
+  
+# this creates columns
 
   def columns
     rows.transpose
   end
+  
+# this creates rows
 
   def rows
     emails.map { |email| [email.date, email.from, email.subject] }
@@ -59,6 +67,8 @@ class MailboxTextFormatter
   def emails
     @mailbox.emails
   end
+  
+# This formats the design in rows and columns. The other two draws it out
 
   def format_row(row)
     cells = 0.upto(row.length - 1).map do |index|
